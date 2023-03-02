@@ -1,1 +1,15 @@
+CREATE DATABASE web_forum_backend;
 
+CREATE TABLE web_forum_backend.threads(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE web_forum_backend.posts(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+post VARCHAR(500) NOT NULL,
+user_name VARCHAR(64) NOT NULL,
+thread_id INT,
+INDEX thread_id_index (thread_id),
+FOREIGN KEY (thread_id) REFERENCES web_forum_backend.threads(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
